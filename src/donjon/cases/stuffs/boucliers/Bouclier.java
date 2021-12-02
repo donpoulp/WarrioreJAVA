@@ -12,15 +12,14 @@ public abstract class Bouclier implements Cases {
 
     //Attribut commun a tous les boucliers
     private int defense;
-    private String bouclier;
+    protected String bouclier;
     private int defPoints;
 
     //Constructeur commun a tous les boucliers.
     protected Bouclier(String bouclier,int defense,int defPoints) {
-        this.bouclier= bouclier;
+        this.bouclier = bouclier;
         this.defense = defense;
         this.defPoints = defPoints;
-
     }
 
     //Getters
@@ -46,8 +45,7 @@ public abstract class Bouclier implements Cases {
     }
 
     //Method toString sert à retourner une valeur sous forme de chaîne de caractére
-    public String toString(){return getBouclier() + "("+getDefense()+" points of defense)";}
-
+    public String toString(){return bouclier;}
 
     // interaction du personnage Guerrier sur les cases avec des objet Bouclier.
     @Override

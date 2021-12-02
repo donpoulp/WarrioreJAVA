@@ -22,6 +22,7 @@ import donjon.game.Game;
 
 public class Main {
     public static void main(String[] args)  {
+        Bdd.getWizard();
         Game jeu = new Game(); // On initie une variable jeu de type Menu qui prend comme valeur l'instanciation d'un nouveau Game
         jeu.menuPrincipal(); // Puis de ce nouveau menu, on appel la fonction menuPrincipal (qui se trouve dans le fichier Menu)
 

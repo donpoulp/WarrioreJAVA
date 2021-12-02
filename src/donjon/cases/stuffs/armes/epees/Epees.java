@@ -6,7 +6,7 @@ abstract public class Epees extends Arme {
  //Classe Epee héritant de arme.
 
  //Attribut communs a toutes les épees.
- private String type;
+ protected String type;
 
  //Constructeur commun de toutes les epees utilisant le constructeur parent(arme) + attribut commun de epee
  protected Epees(String type){

@@ -5,4 +5,6 @@ public class Iron extends Bouclier{
     public Iron() {
         super(" IronShield",2,2);
     }
+
+    public String toString(){return this.bouclier;}
 }

@@ -88,7 +88,6 @@ public class Menu  {
 
     public static Personnages getPersonnages(ArrayList<Guerrier> warriorsList, ArrayList<Magicien> wizardsList) {
         Personnages mySelect;
-
         System.out.println("Choose your character\n" + "1 for warrior\n" + "2 for wizard");
         mySelect = selectTypeOfCharacter(warriorsList,wizardsList);
         return mySelect;
@@ -141,11 +140,26 @@ public class Menu  {
     }
 
     //Method qui retourne la visibilité des listes de personnages guerrier et magicien.
-    public static void showAllLists() {
-        Bdd.getHeroes();
-//        ArrayList<Guerrier> warriorsList, ArrayList<Magicien> wizardsList
-//        System.out.println("All warriors : \n" + warriorsList + "\nAll wizards : \n" + wizardsList);
+    public static void showAllLists(ArrayList<Guerrier> warriorsList, ArrayList<Magicien> wizardsList) {
+        System.out.println("All warriors : \n" + warriorsList + "\nAll wizards : \n" + wizardsList);
     }
+
+    public static void deleteCharacter(){
+        Bdd.getHeroes();
+        System.out.println("Write id what you want to delete.");
+        Scanner test = new Scanner(System.in);
+        int id = test.nextInt();
+        Bdd.delHeroes(id);
+    }
+
+    public static void searchByName(){
+        Bdd.getHeroes();
+        System.out.println("Write name what you want.");
+        Scanner test = new Scanner(System.in);
+        String name = test.nextLine();
+        Bdd.verifyCharacterByName(name);
+    }
+
 
     //Method qui retourne les fonctionnalités pour donne run nom au type de personnage choisit + menu proposant des choix a l'utilisateur.
     public static void menuAfterSelection(Personnages perso, boolean isWarrior) {
@@ -156,15 +170,16 @@ public class Menu  {
         String name = clavier.nextLine();
         if (!name.equals("")) {
             perso.setName(name);
+            if (isWarrior) {
+                Bdd.addWarrior(null, "Guerrier", perso.getNom(), perso.getDeflife(), perso.getDefatk(), ((Guerrier) perso).getArme(), ((Guerrier) perso).getShield());
+            }else{
+                Bdd.addWizard(null, "Magicien", perso.getNom(), perso.getDeflife(), perso.getDefatk(), ((Magicien) perso).getSort(), ((Magicien) perso).getPhiltre());
+
+            }
         }
 
-         do{
-            System.out.println("___________________________"
-                    + "\n" + (isWarrior ? "Warrior's" : "Wizard's") + " name: " + perso.getNom() +
-                    "\nLife points: " + perso.getVie()
-                    + "\nAttack's points: " + perso.getAttaque()
-                    + (isWarrior ? "\nWeapon: " + ((Guerrier) perso).getArme() + "\nShield:" + ((Guerrier) perso).getShield() : "\nSort: " + ((Magicien) perso).getSort()));
 
+        do{
             System.out.println("___________________________" + "\n" + "Change" + (isWarrior ? " warrior's" : " wizard's") + "attributes: \n1 for change parameters\n2 for show your character\n3 for back to the first menu" + "\n___________________________\n");
 
             int change = clavier.nextInt();

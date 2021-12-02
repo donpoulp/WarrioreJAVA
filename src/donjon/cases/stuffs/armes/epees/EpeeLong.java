@@ -5,4 +5,6 @@ public class EpeeLong extends Epees{
     public EpeeLong() {
         super("Big");
     }
+
+    public String toString(){return this.arme + this.type ;}
 }

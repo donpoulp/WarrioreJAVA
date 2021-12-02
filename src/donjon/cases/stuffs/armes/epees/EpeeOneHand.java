@@ -10,4 +10,6 @@ public class EpeeOneHand extends Epees{
     public EpeeOneHand(String custom){
         super(custom);
     }
+
+    public String toString(){return this.arme + this.type ;}
 }

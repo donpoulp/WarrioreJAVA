@@ -1,5 +1,6 @@
 package donjon.game;
 
+import donjon.Bdd;
 import donjon.cases.ennemis.Ennemis;
 import donjon.menu.Menu;
 import donjon.personnages.Personnages;
@@ -20,26 +21,33 @@ public class Game {
     public Game(){
         this.plateau = new Plateau();
         this.scanner = new Scanner(System.in);
-        this.warriorsList = new ArrayList<>();
-        this.wizardsList = new ArrayList<>();
+
+        this.warriorsList = Bdd.getWarrior();
+        this.wizardsList = Bdd.getWizard();
     }
 
     //Method qui retourne une "interaction" avec l'utilisateur en lui proposant un menu avec plusieurs choix.
     public void menuPrincipal() {
         boolean selectMenuPrincipal = true; // On initie une variable selectCondition de type boolean avec la valeur TRUE
          do{ // On initialise une boucle WHILE
-            int createCharacter = Menu.getIntResult("Principal menu\nCreate a character ? : \n1-Yes\n2 Show all characters\n3 Start game\n4-Left the game"); // On déclare la variable selector de type INT avec comme valeur l'attente d'un entier pour la variable scanner
+            int createCharacter = Menu.getIntResult("Principal menu :\n1-Create a character\n2-Show all characters\n3-Delete character\n4-Verify existence of character\n5-Start game\n6-Left the game"); // On déclare la variable selector de type INT avec comme valeur l'attente d'un entier pour la variable scanner
             switch (createCharacter) { // On initialise un switch avec la variable selector (qui est un INT)
                 case 1: //Si l'utilisateur tape 1 alors on déclare une nouvelle variable clavier de type Scanner avec comme valeur un nouveau Scanner
                     Menu.createCharacter(warriorsList,wizardsList);
                     break;
                 case 2: //Si la réponse est 2 au switch SELECTOR alors on print une chaîne de caractére qui montre les données stockées dans les deux list des personnages
-                    Menu.showAllLists();
+                    Menu.showAllLists(warriorsList,wizardsList);
                     break;
-                case 3: //Si la réponse est 3 alors on appel la method start()
+                case 3:
+                    Menu.deleteCharacter();
+                    break;
+                case 4:
+                    Menu.searchByName();
+                    break;
+                case 5: //Si la réponse est 3 alors on appel la method start()
                     startGame();
                     break;
-                case 4: //Si la réponse est 4 alors on print une chaîne de caractére, la condition du while est passer à false et le programme s'arrête.
+                case 6: //Si la réponse est 4 alors on print une chaîne de caractére, la condition du while est passer à false et le programme s'arrête.
                     selectMenuPrincipal = false;
                     break;
             }

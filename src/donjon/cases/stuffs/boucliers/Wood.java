@@ -11,4 +11,6 @@ public class Wood extends Bouclier{
     public Wood(String custom) {
         super(custom, 1,1);
     }
+
+    public String toString(){return this.bouclier;}
 }

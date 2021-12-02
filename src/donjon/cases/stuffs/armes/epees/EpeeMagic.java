@@ -6,4 +6,6 @@ public class EpeeMagic extends Epees{
     public EpeeMagic() {
         super("Magic");
     }
+
+    public String toString(){return this.arme + this.type ;}
 }

@@ -7,8 +7,8 @@ abstract public class Personnages {
     //Class Personnage abstract pour ne pas pouvoir instancier d'objet personnages. Et pouvoir instancier que les enfant de cette classe.
 
     //Attribut commun a tout les personnages.
-    private String nom;
-    private int vie;
+    protected String nom;
+    protected int vie;
     protected int attaque;
     protected int maxlife;
     protected int maxatk;
@@ -48,7 +48,7 @@ abstract public class Personnages {
     //Method toString retournant une valeur en chaîne de caractère.
     @Override
     public String toString() {
-        return this.getNom() + " " + this.getVie() + " " + "points of life and" + " " + this.getAttaque() + " points of attack. ";
+        return "Name : "+this.getNom() + " , "+"Life : " + this.getVie()+" , "+"Strength : "+ this.getAttaque()+".";
     }
 
     //Method de type boolean retournant une valeur en true.
@@ -63,4 +63,5 @@ abstract public class Personnages {
             throw new PersoMort();
         }
     }
+
 }

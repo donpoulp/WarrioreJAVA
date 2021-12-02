@@ -21,7 +21,7 @@ public abstract class Sort implements Cases {
     //Method toString retournant une valeur en chaîne de caractère.
     @Override
     public String toString() {
-        return getName() + ", attack of this spell: " + getAtk();
+        return name;
     }
 
     //Getters

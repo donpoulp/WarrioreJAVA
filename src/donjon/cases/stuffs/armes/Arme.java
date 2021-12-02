@@ -10,7 +10,7 @@ abstract public class Arme implements Cases {
     //Classe Arme héritant de cases
 
     //Attributs commun de toutes les armes
-    private String arme; // Attribut de la classe Arme
+    protected String arme; // Attribut de la classe Arme
     private int attaque;
 
 
